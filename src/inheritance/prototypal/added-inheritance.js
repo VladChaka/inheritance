@@ -1,26 +1,20 @@
-function Person(name) { // создаём класс
+function Person(name) {
     this.name = name;
 }
 
-Person.prototype.getName = function() { // записываем в прототип класса функцию
+Person.prototype.getName = function() {
     return this.name;
 }
 
 function Worker(name) {
-    Person.apply(this, arguments); // передаём имя нашего работника в класс Person
+    Person.call(this, name);
 }
 
-/**
- * todo: Рассказать почему так
- */
-// Object.create - создаёт обьект с указаным обьектом прототипа (параметр записывает в __proto__)
-Worker.prototype = Object.create(Person.prototype); // задаём наследование
+// Worker.prototype.__proto__ = Person.prototype; // не поддежривается в IE-10
+Worker.prototype = Object.create(Person.prototype);
 
-/**
- * todo: Узнать про сохранение контекста
- */
-Worker.prototype.constructor = Worker; // сохраняем конструктор дочернего класса
+Worker.prototype.constructor = Worker;
 
-const worker = new Worker('Vasya'); // создаём экземпляр класса
+const worker = new Worker('Vasya');
 
 console.log(worker.getName()); // Vasya

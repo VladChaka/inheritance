@@ -1,13 +1,10 @@
 {
-  "name": "structures-and-algorithms",
+  "name": "inheritance",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Maksim Yakusik",
-  "license": "ISC",
-  "devDependencies": {
-    "jasmine": "^3.3.1"
-  }
+  "author": "Vlad Chuhunov",
+  "license": "ISC"
 }

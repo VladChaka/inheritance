@@ -8,9 +8,9 @@ function Person(name, age) {
 }
 
 function Worker(name, age) {
-    Person.apply(this, arguments); // задаём наследование
+    Person.apply(this, arguments);
 }
 
-const worker = new Worker('Vasya', 33); // создаём экземпляр класса
+const worker = new Worker('Vasya', 33);
 
 console.log(worker.getInfo()); // { name: 'Vasya', age: 33 }

@@ -1,42 +1,27 @@
-function Person() { // создаём класс
-    let name = '321';
-    
-    this.name1 = '123'
-    this.setNewName = function(newName) {
-        name = newName;
-    };
-
-    this.getName = function() {
-        return name;
-    };
+function Person(name) {
+    this.name = name;
 }
 
-Person.prototype.setName = function(name) {
-    console.log(this);
-    
-    return this.name1;
-    // return this.setNewName(name);
-}
-Person.prototype.get = function() {
-    return this.getName();
+Person.prototype.age = 33;
+
+Person.prototype.getNameAndAge = function() {
+    return 'Имя: ' + this.name + ', возраст: ' + this.age;
 }
 
-function Worker() { }
+function Worker(name, salary) {
+    Person.call(this, name);
 
-/**
- * todo: Рассказать почему так
- */
-// Object.create - создаёт обьект с указаным обьектом прототипа (параметр записывает в __proto__)
-Worker.prototype = Object.create(Person.prototype); // задаём наследование
+    this.salary = salary;
+}
 
-/**
- * todo: Узнать про сохранение контекста
- */
-Worker.prototype.constructor = Worker; // сохраняем конструктор дочернего класса
+Worker.prototype = Object.create(Person.prototype);
+Worker.prototype.constructor = Worker;
 
-const worker = new Worker(); // создаём экземпляр класса
+Worker.prototype.getFullInfo = function () {
+    return this.getNameAndAge() + ', зарплата: ' + this.salary;
+};
 
-worker.setName('Vasya');
+const worker = new Worker2('Vasya', 1000);
 
-console.log(worker.name); // undefined
-// console.log(worker.get()); // 'Vasya'
+console.log(worker.age); // 33
+console.log(worker.getFullInfo()); // Имя: Vasya, возраст: 33, зарплата: 1000
