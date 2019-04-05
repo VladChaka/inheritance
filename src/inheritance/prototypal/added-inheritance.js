@@ -10,9 +10,7 @@ function Worker(name) {
     Person.call(this, name);
 }
 
-// Worker.prototype.__proto__ = Person.prototype; // не поддежривается в IE-10
 Worker.prototype = Object.create(Person.prototype);
-
 Worker.prototype.constructor = Worker;
 
 const worker = new Worker('Vasya');

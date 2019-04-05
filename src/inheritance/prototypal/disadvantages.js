@@ -1,11 +1,11 @@
 function Person(name) {
-    this.name = name;
+    let personName = name;
 }
 
 Person.prototype.age = 33;
 
 Person.prototype.getNameAndAge = function() {
-    return 'Имя: ' + this.name + ', возраст: ' + this.age;
+    return 'Имя: ' + this.personName + ', возраст: ' + this.age;
 }
 
 function Worker(name, salary) {
@@ -23,5 +23,4 @@ Worker.prototype.getFullInfo = function () {
 
 const worker = new Worker2('Vasya', 1000);
 
-console.log(worker.age); // 33
-console.log(worker.getFullInfo()); // Имя: Vasya, возраст: 33, зарплата: 1000
+console.log(worker.getFullInfo()); // Имя: undefined, возраст: 33, зарплата: 1000
