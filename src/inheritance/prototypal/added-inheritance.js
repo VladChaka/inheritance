@@ -10,6 +10,7 @@ function Worker(name) {
     Person.call(this, name);
 }
 
+// Worker.prototype.__proto__ = Person.prototype;
 Worker.prototype = Object.create(Person.prototype);
 Worker.prototype.constructor = Worker;
 
